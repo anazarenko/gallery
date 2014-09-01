@@ -4,21 +4,23 @@ a:hover{
 
 form{
     width: 300px;
-    margin: 10px auto;
+    margin: 20px 0 0 30px;
+
 }
 
-#sortBy a{
-    margin: 0 80px 0 10px;
+#menu a, #menu>span{
+    margin: 0 0 0 30px;
     font-size: 16px;
     color: #000;
 }
 
-#sortBy a:hover, #sortBy a.active{
-    text-decoration: none;
-    color: blue;
+#menu>span.upload{
+    background: limegreen;
+    border-color: green;
+    font-weight: bold;
 }
 
-#main-container, #sortBy{
+#main-container, #menu{
     width: 980px;
     margin: 20px auto 0;
 }

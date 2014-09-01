@@ -5,6 +5,7 @@ $(document).ready(function(){
     var h = 400;
 
     $('div.pic').children('form').hide();
+    $('#upload-form').hide();
 
     $('#main-container').children('div.pic').children('div').children('img').each(function(){
         var img = $(this);
@@ -22,6 +23,10 @@ $(document).ready(function(){
             $('#showImage').css('display','block').andSelf().children('div').append(img)
                 .end().$(this).css('opacity', '0.75');
         });
+    });
+
+    $('span.upload').on('click', function(){
+        $(this).parent('section').children('form').slideToggle();
     });
 
     $('#showImage').on('click', function(){
