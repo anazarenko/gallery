@@ -1,0 +1,90 @@
+a:hover{
+    text-decoration: none;
+}
+
+form{
+    width: 300px;
+    margin: 10px auto;
+}
+
+#sortBy a{
+    margin: 0 80px 0 10px;
+    font-size: 16px;
+    color: #000;
+}
+
+#sortBy a:hover, #sortBy a.active{
+    text-decoration: none;
+    color: blue;
+}
+
+#main-container, #sortBy{
+    width: 980px;
+    margin: 20px auto 0;
+}
+
+#main-container>div.pic{
+    width: 220px;
+    height: 320px;
+    display: inline-block;
+    text-align: left;
+    overflow: hidden;
+    opacity: 0.75;
+    vertical-align: middle;
+    padding: 0 10px;
+}
+
+#main-container>div.pic>div:first-child{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+#main-container>div.pic>div:first-child>img{
+    width: 100%;
+    height: 100%;
+}
+
+#main-container>div.pic>div.comment{
+    max-height: 40px;
+    overflow: hidden;
+}
+
+#main-container>div.pic span.edit{
+    font-weight: bold;
+    color: green;
+    padding: 3px;
+    border: 1px solid green;
+    cursor: pointer;
+}
+
+#main-container>div.pic span.del{
+    font-weight: bold;
+    padding: 3px;
+    border: 1px solid red;
+    color: red;
+    cursor: pointer;
+}
+
+#main-container>div.pic>form>textarea{
+    height: 20px;
+}
+
+#showImage{
+    position: fixed;
+    display: none;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /*background: #888;*/
+    /*opacity: 0.65;*/
+}
+
+#showImage div{
+    width: 50%;
+    margin: 25px auto;
+    text-align: center;
+}
+
+
+
