@@ -1,12 +1,8 @@
 <?php
 
 require 'include/config.inc.php';
-if ($_GET['sortBySize'] == 1){
-    $query = "SELECT * FROM gallery ORDER BY size DESC";
-} else {
-$query = "SELECT * FROM gallery ORDER BY timestamp DESC";
-}
-$result = mysqli_query($link, $query);
+
+$image = new Image();
 
 ?>
 
@@ -40,29 +36,7 @@ $result = mysqli_query($link, $query);
     <a href="index.php?sortBySize=1" <? if($_GET['sortBySize'] == 1) echo "class='active'" ?> >[Сортировать по размеру изображения]</a>
 </section>
 <section id="main-container">
-    <?
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-PRINT <<<HERE
-
-    <div class="pic">
-        <div class="pic-area"><img src="$row[img]"></div>
-        <div class="date"><strong>Дата загрузки: </strong>$row[date]</div>
-        <div class="comment"><strong>Описание: </strong>$row[comment]</div>
-        <form action='edit.php' method='post'>
-            <textarea name="comment" cols="20" rows="2" maxlength="200">$row[comment]</textarea><br>
-            <input type="hidden" name="id" value="$row[id]">
-            <input type="submit" class="btn">
-        </form>
-        <span class="edit">Редактировать</span>
-        <a href="del.php?id=$row[id]"><span class="del">Удалить</span></a>
-    </div>
-
-HERE;
-        }
-        mysqli_free_result($result);
-        mysqli_close($link);
-    ?>
-
+    <? $image->main($_GET['sortBySize']); ?>
 </section>
 
 <section id="showImage">
