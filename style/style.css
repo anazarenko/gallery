@@ -3,9 +3,7 @@ a:hover{
 }
 
 form{
-    width: 300px;
-    margin: 20px 0 0 30px;
-
+    margin: 5px 0 10px 5px;
 }
 
 #menu a, #menu>span{
@@ -58,6 +56,7 @@ form{
     padding: 3px;
     border: 1px solid green;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 #main-container>div.pic span.del{
@@ -83,7 +82,7 @@ form{
 }
 
 #showImage div{
-    width: 50%;
+    /*width: 50%;*/
     margin: 25px auto;
     text-align: center;
 }

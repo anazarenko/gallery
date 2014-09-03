@@ -9,17 +9,14 @@ class Image{
     function __destruct(){
         mysqli_close($this->link);
     }
-    function main($sortBySize){
-        if ($sortBySize == 1){
-            $query = "SELECT * FROM gallery ORDER BY size DESC";
-        } else {
-            $query = "SELECT * FROM gallery ORDER BY timestamp DESC";
-        }
-        $result = $this->db($query);
+    function main(){
 
-        while($row = mysqli_fetch_array($result, MYSQLI_ASSOC)){
-            $this->showPhoto($row);
-        }
+        $query = "SELECT * FROM gallery ORDER BY timestamp DESC";
+        $result = $this->db($query);
+        $photos = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+        echo json_encode($photos);
+
     }
     function addPhoto($file, $comment){
         if (!empty($file['fupload']['name'])) { // Отправлялись ли файлы
@@ -55,20 +52,16 @@ class Image{
         $query = "INSERT INTO gallery(img, comment, size, date)
                  VALUES('$uploadfile', '$comment', $imgSize, '$date')";
         $result = $this->db($query);
-        if ($result){
-            header('Location: index.php');
-        } else {
-            exit('Ошибка при загрузке фотографии');
-        };
     }
     function removePhoto($id){
         $query = "DELETE FROM gallery WHERE id = $id";
         $result = $this->db($query);
+
         if ($result){
-            header('Location: index.php');
+            echo 1;
         } else {
-            exit('Ошибка при удалении фотографии');
-        };
+            echo 0;
+        }
     }
     function editComment($id, $newComment){
         $newComment = addslashes(htmlspecialchars(strip_tags($newComment)));
@@ -95,7 +88,7 @@ class Image{
             <input type="submit" class="btn">
         </form>
         <span class="edit">Редактировать</span>
-        <a href="del.php?id=$row[id]"><span class="del">Удалить</span></a>
+        <span class="del-button del" onclick='removePhoto($(this), $row[id])'>Удалить</span>
     </div>
 
 HERE;

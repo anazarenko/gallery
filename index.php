@@ -25,20 +25,20 @@ $image = new Image();
     <span class="btn upload">Загрузить фото</span>
     <a href="index.php"><span class="btn <? if($_GET['sortBySize'] != 1) echo "active" ?>">Сортировать по дате загрузки</span></a>
     <a href="index.php?sortBySize=1"><span class="btn <? if($_GET['sortBySize'] == 1) echo "active" ?>">Сортировать по размеру изображения</span></a>
-    <form action='add-photo.php' id="upload-form" method='post' enctype='multipart/form-data'>
+    <form action="" id="upload-form" method='post' enctype='multipart/form-data'>
         <fieldset>
             <legend>Загрузить фото</legend>
             <input type="FILE" name="fupload">
             <span class="help-block">Размер изображения не должен превышать 1 МБ. Доступные форматы jpg, jpeg или png.</span>
             <textarea name="comment" cols="40" placeholder="Введите описание…" maxlength="200"></textarea>
             <span class="help-block">Максимум 200 символов.</span>
-            <input type="submit" class="btn">
+            <div onclick="addPhoto()" class="btn">Отправить</div>
         </fieldset>
     </form>
 </section>
 
 <section id="main-container">
-    <? $image->main($_GET['sortBySize']); ?>
+    <? //$image->main($_GET['sortBySize']); ?>
 </section>
 
 <section id="showImage">

@@ -9,6 +9,7 @@
 require 'include/config.inc.php';
 
 $image = new Image();
+
 $image->addPhoto($_FILES, $_POST['comment']);
 
 ?>
