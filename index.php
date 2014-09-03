@@ -24,8 +24,8 @@ $image = new Image();
 
 <section id="menu">
     <span class="btn upload">Загрузить фото</span>
-    <span id="sortByDate" onclick="sort($(this), 1)" class="btn active">Сортировать по дате загрузки</span>
-    <span id="sortBySize" onclick="sort($(this), 2)" class="btn">Сортировать по размеру изображения</span>
+    <span id="sortByDate" onclick="sortInd(1)" class="btn active">Сортировать по дате загрузки</span>
+    <span id="sortBySize" onclick="sortInd(2)" class="btn">Сортировать по размеру изображения</span>
     <form action="add-photo.php" id="upload-form" method='post' enctype='multipart/form-data'>
         <fieldset>
             <legend>Загрузить фото</legend>
@@ -33,7 +33,7 @@ $image = new Image();
             <span class="help-block">Размер изображения не должен превышать 1 МБ. Доступные форматы jpg, jpeg или png.</span>
             <textarea name="comment" cols="40" placeholder="Введите описание…" maxlength="200"></textarea>
             <span class="help-block">Максимум 200 символов.</span>
-            <input id="upload-btn" type="submit">
+            <input id="upload-btn" class="upload" type="submit" value="Загрузить" style="background: limegreen; border-color: green; font-weight: bold;">
         </fieldset>
     </form>
 </section>
