@@ -52,6 +52,9 @@ class Image{
         $query = "INSERT INTO gallery(img, comment, size, date)
                  VALUES('$uploadfile', '$comment', $imgSize, '$date')";
         $result = $this->db($query);
+        if ($result){
+            echo "1";
+        }
     }
     function removePhoto($id){
         $query = "DELETE FROM gallery WHERE id = $id";

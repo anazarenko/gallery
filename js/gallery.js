@@ -10,6 +10,15 @@ $(document).ready(function(){
         $(this).parent('section').children('form').slideToggle();
     });
 
+    $("#upload-form").ajaxForm(function(data) {
+        if (data == 1){
+            $('#upload-form').slideUp().andSelf().resetForm();
+            getAllPhotos();
+        } else {
+            alert(data);
+        }
+    });
+
     $('#showImage').on('click', function(){
         $(this).css('display','none').andSelf().children('div').children('img').remove();
     });
@@ -32,19 +41,10 @@ function showImageResize(){
     }
 }
 
-function addPhoto(){
-    var msg = $('#upload-form').serialize();
-    $.ajax({
-        type: 'POST',
-        url: 'add-photo.php',
-        data: msg
-    });
-}
-
 function removePhoto(elem, id){
     $.get("del.php?id=" + id, function(data){
         if (data == 1){
-            elem.parent('.pic').fadeOut('slow').end.remove();
+            elem.parent('.pic').fadeOut('normal').end().remove();
         }
     });
 }
@@ -104,5 +104,23 @@ function printAllPhoto(photos){
     $('span.edit').on('click', function(){
         $(this).prev().toggle().andSelf().prev().prev().toggle();
     });
+}
+
+function sort(elem, i){
+    if (i == 2){
+        $('#sortByDate').removeClass('active');
+        elem.addClass('active');
+        allPhotos.sort(function(obj1, obj2){
+            return (obj2.size - obj1.size);
+        });
+    } else {
+        $('#sortBySize').removeClass('active');
+        elem.addClass('active');
+        allPhotos.sort(function(obj1, obj2){
+            return (obj2.id - obj1.id);
+        });
+    }
+    printAllPhoto(allPhotos);
+    console.log(allPhotos);
 }
 
